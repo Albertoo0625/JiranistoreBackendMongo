@@ -11,10 +11,10 @@ const filePayloadExists = require('../middleware/filesPayloadExists');
 
 router.get('/',pendingProductController.getAllPendingProducts);
 router.post('/',verifyJWT,verifyRoles(ROLES.User),filePayloadExists,fileSizeLimiter,fileExtLimiter(['.png', '.jpg', '.jpeg']),pendingProductController.addPendingProduct);
-router.put('/:id',pendingProductController.updatePendingProduct);
+// router.put('/:id',pendingProductController.updatePendingProduct);
 
 router.route('/:id')
     .get(pendingProductController.getOnePendingProduct)
     .delete(pendingProductController.deletePendingProduct)
-
+    .put(pendingProductController.updatePendingProduct)
 module.exports=router;

@@ -40,38 +40,57 @@ const getOneProduct = async (req, res) => {
     const id = req.params.id;
 
     try {
-        let product = await Product.findById(id);
+        let product = await Product.findOne({product_id:id});
         res.status(200).send(product);
     } catch (err) {
         res.status(500).send(err);
     }
 };
 
-const updateProduct = async (req, res) => {
-    const { id } = req.params;
-    const { inCart, count, total, quantity } = req.body;
+// const updateProduct = async (req, res) => {
+//     const { id } = req.params;
+//     const { inCart, count, total, quantity } = req.body;
+//     try {
+//         let product = await Product.findOne({product_id:id});
+//         console.log(`product incart test ${product}`)
+//         if (!product) {
+//             return res.status(404).json({ message: 'Product not found' });
+//         }
+//         product.product_inCart = inCart;
+//         product.product_total = total;
+//         product.product_count = count;
+//         product.product_quantity = quantity;
+//         await product.save();
+//         res.status(200).json(product);
+//     } catch (err) {
+//         res.status(500).json({ message: `Error updating product ${err.message}` });
+//     }
+// };
 
+const updateProduct = async (req, res) => {
+    const id = req.params.id;
+    const { inCart, count, total, quantity } = req.body;
     try {
-        let product = await Product.findById(id);
-        if (!product) {
-            return res.status(404).json({ message: 'Product not found' });
-        }
-        product.product_inCart = inCart;
-        product.product_total = total;
-        product.product_count = count;
-        product.product_quantity = quantity;
-        await product.save();
-        res.status(200).json(product);
-    } catch (err) {
-        res.status(500).json({ message: 'Error updating product' });
+      let product = await Product.findOneAndUpdate(
+        { product_id: id },
+        {  product_inCart :inCart,
+           product_total : total,
+           product_count : count,
+           product_quantity : quantity },
+        { new: true }
+      );
+      res.status(200).json(product);
+    } catch (error) {
+      res.status(500).json({ message: `Error updating product, ${error.message}` });
     }
-};
+  };
 
 const deleteProduct = async (req, res) => {
     const id = req.params.id;
 
     try {
-        await Product.findByIdAndDelete(id);
+        const tobeDeleted=await Product.findOne({product_id:id});
+        
         res.status(200).send('Product is deleted!');
     } catch (err) {
         res.status(500).send(err);

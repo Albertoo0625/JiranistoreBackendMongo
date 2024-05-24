@@ -16,7 +16,7 @@ const verifyRoles = (...allowedRoles) => {
 
        
         const result =arr.map(role => rolesArray.includes(role)).find(val => val === true);
-        if (!result) return res.status(401).json("Role not allowed");
+        if (!result) return res.status(401);
         next();
     }
 }

@@ -44,19 +44,67 @@
 
 20230303	 15:03:13	f131486d-bea0-4950-8b8a-0e6087d5b21c	TypeError	Cannot read properties of undefined (reading 'stkCallback')
 
-20240311	 19:01:01	e6cf5d76-d779-4eb5-a2aa-2f99dd0bcd90	Error	Not allowed by CORS
+20230314	 02:06:55	19cffa20-3ade-4fb6-a0df-1ab38a5db826	Error	Not allowed by CORS
 
-20240311	 19:01:20	0d8fde07-8ad2-4d85-b7a8-e07f45efc31a	Error	Not allowed by CORS
+20230404	 10:31:17	0f98a57a-27cd-4ff6-a1aa-a05c43c1519b	ReferenceError	shippingInfo is not defined
 
-20240311	 19:02:02	4eb35931-71f0-4314-b89f-774a54ad7ec1	Error	Not allowed by CORS
+20230404	 10:43:38	de0a81d8-67bf-489c-8983-0d950816ffdc	Error	Cannot set headers after they are sent to the client
 
-20240311	 19:05:05	231134bf-14b3-474e-b52d-6b1016e061a0	Error	Not allowed by CORS
+20230404	 10:43:39	b7701e30-85a5-48ea-a651-1be1fa227130	Error	Cannot set headers after they are sent to the client
 
-20240311	 19:05:13	ebd43750-fe57-491d-9bbc-1487e1ecf59b	Error	Not allowed by CORS
+20240425	 10:51:59	023ddac4-f8b9-4443-88c4-457fcaf4b3cf	Error	Not allowed by CORS
 
-20240311	 19:05:51	e22ea6b3-9cce-4cba-be07-9dc8732b00fd	Error	Not allowed by CORS
+20240425	 10:52:00	79c4a7b5-2979-4dfa-80d5-7cf64bdbf20d	Error	Not allowed by CORS
 
-20240311	 19:06:02	4e1e0563-18f3-47a2-8905-57ef4daec4b8	Error	Not allowed by CORS
+20240425	 10:52:00	88154d40-2699-42d8-9040-2085ad5d4696	Error	Not allowed by CORS
 
-20240311	 20:00:22	c6de1c55-b916-4718-9b10-cb21bda24a21	SyntaxError	Unexpected token " in JSON at position 0
+20240425	 10:52:00	1136e614-79c5-4010-bbe3-07e0108d66f3	Error	Not allowed by CORS
+
+20240425	 10:52:00	088fa7a8-b420-4109-8506-34d3c95d18c9	Error	Not allowed by CORS
+
+20240425	 10:52:02	82f6a735-5b90-40bc-a5d6-aefc8810125e	Error	Not allowed by CORS
+
+20240425	 10:52:02	0bcf66fc-01f0-4cbc-b5be-045569d0f6e0	Error	Not allowed by CORS
+
+20240425	 10:52:02	e1870f11-542f-4a6a-a63d-83a7c1f71a1d	Error	Not allowed by CORS
+
+20240425	 10:52:02	0328e443-8772-4308-8ffc-cff7d80648b7	Error	Not allowed by CORS
+
+20240425	 10:52:02	d8c9ba07-4d5f-446c-9c66-cab2d58180a3	Error	Not allowed by CORS
+
+20240425	 10:52:59	2c3bc827-ae12-4621-babd-f575a702b7e1	Error	Not allowed by CORS
+
+20240425	 10:52:59	61fb3a0f-3b45-4026-a193-b62719624a1f	Error	Not allowed by CORS
+
+20240425	 10:52:59	0c5a264b-3e8e-4133-bdd0-9bfc6c2d58d0	Error	Not allowed by CORS
+
+20240425	 10:52:59	35ec3803-4d4d-4388-9d55-6cc019ce734e	Error	Not allowed by CORS
+
+20240425	 10:52:59	fe3a420f-aec7-4610-9373-9448b4dfce1e	Error	Not allowed by CORS
+
+20240425	 10:53:04	4b9d248d-14f5-4d1d-9617-5423032b3d2a	Error	Not allowed by CORS
+
+20240425	 10:53:04	2aaaaaaa-dedd-4c59-82f7-2a69f48421b2	Error	Not allowed by CORS
+
+20240425	 10:53:04	4bb7c086-a1bf-4e45-a4d6-db4ecf617c98	Error	Not allowed by CORS
+
+20240425	 10:53:04	b1a8fc41-e901-4d46-8648-0bd47bd62142	Error	Not allowed by CORS
+
+20240425	 10:53:04	8df70a64-b64c-4afb-8242-974ef27f6c0c	Error	Not allowed by CORS
+
+20240425	 10:55:15	3cb4f57b-0e3e-449e-9e49-13f2b8ce74ee	Error	Not allowed by CORS
+
+20240425	 10:55:16	2a536f2f-f6dc-41ef-86d2-0f10f4d56f98	Error	Not allowed by CORS
+
+20240425	 10:55:20	f0451dc8-f7bf-469f-a93d-6659c5becda7	Error	Not allowed by CORS
+
+20240425	 10:55:42	940b031e-74e6-43d8-beb7-f38e36d94e77	Error	Not allowed by CORS
+
+20240425	 10:55:48	55d07127-d9ee-461b-86ec-6483c5b43924	Error	Not allowed by CORS
+
+20240425	 10:55:52	de99886b-5c19-4db4-92c9-335650203c2c	Error	Not allowed by CORS
+
+20240425	 10:55:52	e469869f-ace6-4881-8fec-de862f01d5af	Error	Not allowed by CORS
+
+20240425	 10:55:58	05000a9b-e29d-4651-bf6e-4d676b2dddd6	Error	Not allowed by CORS
 

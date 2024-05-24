@@ -1,8 +1,10 @@
-const express=require('express');
 const axios=require('axios');
+const localtunnel=require('localtunnel');
 
 
 const handleMpesaPayment=async(req,res)=>{
+
+
     const phone =req.body.phone.substring(1);
     const amount= req.body.amount;
     const token=req.body.token;
@@ -27,20 +29,33 @@ const handleMpesaPayment=async(req,res)=>{
 
     const password= new Buffer.from(shortcode+passkey+timestamp).toString("base64");
 
+try{
 
+  const callbackURL =await (async () => {
+  const tunnel = await localtunnel({ port: 3500 });
+
+  // the assigned public url for your tunnel
+  // i.e. https://abcdefgjhij.localtunnel.me
+   return tunnel.url;
+  })();
+
+
+
+  console.log(`Callback URL ${callbackURL}`);
+ 
 
 await axios.post('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest',
         {    
-            "BusinessShortCode":shortcode,    
-            "Password": password,    
+          "BusinessShortCode":shortcode,    
+          "Password": password,    
           "Timestamp": timestamp,    
           "TransactionType": "CustomerPayBillOnline",    //"CusomerBuyGoodsOnline"
-            "Amount":amount,    
-           "PartyA":`254${phone}`,    
-            "PartyB":shortcode,    
+          "Amount":amount,    
+          "PartyA":`254${phone}`,    
+          "PartyB":shortcode,    
           "PhoneNumber":`254${phone}`,    
-          "CallBackURL":"https://7eb3-197-155-70-110.in.ngrok.io/callback",    
-          "AccountReference":`254${phone}`,    
+          "CallBackURL":`${callbackURL}/callback`,    
+          "AccountReference":`254${phone}`,   
           "TransactionDesc":"Test"
         },{
           headers:{
@@ -54,10 +69,11 @@ await axios.post('https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processreques
       res.status(400).json(`errorMessage: ${err}`);
       });
 
+    }catch(err){
+      console.log(err.message)
+    }
+
 }
-
-
-    
 
 
 module.exports={handleMpesaPayment}

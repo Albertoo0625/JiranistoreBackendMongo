@@ -2,18 +2,20 @@ const express=require('express');
 const app=express();
 const path=require('path');
 require("dotenv").config();
+
 const cors=require('cors')
 const PORT=process.env.PORT || 3500;
 const {logger}=require('./middleware/LogEvents');
 const errorHandler=require('./middleware/errorHandler');
 const { json } = require('express');
+const verifyJWT= require('./middleware/verifyJWT');
 const cookieParser=require("cookie-parser");
 const corsOptions=require('./config/corsOptions')
 const credentials=require('./middleware/credentials');
 const { generateToken } = require('./middleware/mpesaAuth');
 const fileUpload = require("express-fileupload");
 const nodemailer = require('nodemailer');
-const mongoose = require('mongoose');
+const mongoose=require('mongoose');
 
 
 
@@ -22,7 +24,6 @@ app.use(logger);
 app.use(credentials);
 
 app.use(cors(corsOptions));
-
 
 app.use(express.urlencoded({extended: false}));
 
@@ -45,12 +46,16 @@ app.use('/auth',require("./routes/auth"));
 app.use('/refresh',require("./routes/refresh"));
 app.use('/logOut',require('./routes/logOut'));
 
+
+app.use('/search',require("./routes/search"));
 app.use('/products',require("./routes/product"));
 app.use('/pendingproducts',require("./routes/pendingProducts"));
 app.use('/sendmail',require("./routes/mailer"));
 app.use('/stk',generateToken,require('./routes/mpesa'));
 app.use('/gentoken',require('./routes/genToken'));
 app.use('/callback',require('./routes/callback'));
+app.use('/order',require('./routes/orders'));
+
 
 
 (async ()=>{
@@ -64,6 +69,7 @@ app.use('/callback',require('./routes/callback'));
   });
 
 })()
+
 
 app.use(errorHandler);
 

@@ -10,11 +10,12 @@ router.get('/',productController.getAllProducts);
 router.post('/',productController.addProduct);
 router.put('/:id',productController.updateProduct);
 
+
 router.route('/:id')
     .get(productController.getOneProduct)
     .delete(productController.deleteProduct);
 
-router.route('/search/:query')
-.get(productController.searchProduct)
-
+// router.route('/search/:query')
+//     .get(productController.searchProduct)
+ 
 module.exports=router;
