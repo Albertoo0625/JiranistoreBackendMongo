@@ -26,7 +26,7 @@ const allowedOrigins=[
     'http://localhost:3000',
     'https://api.safaricom.co.ke/mpesa/c2b/v1/registerurl',
     'https://api.safaricom.co.ke',
-    'https://jiranistorefrontendmongo.onrender.com/'
+    'https://jiranistorefrontendmongo.onrender.com'
 ]
 
 module.exports=allowedOrigins;
