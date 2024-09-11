@@ -119,7 +119,7 @@ const addPendingProduct = async (req, res) => {
     if (err) return res.status(500).json({ status: "error", message: err });
   });
 
-  const fullFilePath = `http://localhost:3500/images/${image.name}`;
+  const fullFilePath = `https://jiranistorebackendmongo.onrender.com/images/${image.name}`;
 
   try {
     const newPendingProduct = new PendingProduct({
