@@ -37,35 +37,79 @@ const getAllProducts = async (req, res) => {
 };
 
 const getOneProduct = async (req, res) => {
-    const id = req.params.id;
+    const id = Number(req.params.id);
 
     try {
-        let product = await Product.findById(id);
+        let product = await Product.findOne({ product_id: id });
         res.status(200).send(product);
     } catch (err) {
         res.status(500).send(err);
     }
 };
 
-const updateProduct = async (req, res) => {
-    const { id } = req.params;
-    const { inCart, count, total, quantity } = req.body;
+// const updateProduct = async (req, res) => {
+//     const { id } = req.params;
+//     const { inCart, count, total, quantity } = req.body;
 
+//     try {
+//         // Find the existing product by product_id
+//         let product = await Product.findOne({ product_id: Number(id) });
+
+//         // Log the product for debugging
+//         console.log(`PRODUCT FOUND: ${product}`);
+
+//         // Check if the product was found
+//         if (!product) {
+//             return res.status(404).json({ message: 'Product not found' });
+//         }
+
+//         // Modify product fields
+//         product.product_inCart = inCart;
+//         product.product_total = total;
+//         product.product_count = count;
+//         product.product_quantity = quantity;
+
+//         // Save the updated product
+//         await product.save(); // isNew will be false here, counter will not be incremented
+
+//         // Respond with the updated product
+//         res.status(200).json(product);
+//     } catch (err) {
+//         res.status(500).json({ message: `Error updating product: ${err.message}` });
+//     }
+// };
+
+
+
+const updateProduct = async (req, res) => {
+    const id = Number(req.params.id); 
+    console.log(`TYPE ${typeof(id)}`);
+    const { inCart, count, total, quantity } = req.body;
+    console.log(`values - inCart: ${inCart}, count: ${count}, total: ${total}, quantity: ${quantity}`);
     try {
-        let product = await Product.findById(id);
+        // Use findOneAndUpdate similar to updatePendingProduct
+        let product = await Product.findOneAndUpdate(
+            { product_id: id}, // Match by product_id
+            { 
+                product_inCart: inCart, 
+                product_total: total, 
+                product_count: count, 
+                product_quantity: quantity 
+            },
+            { new: true } // Return the updated document
+        );
+
+        // Check if the product was found and updated
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
         }
-        product.product_inCart = inCart;
-        product.product_total = total;
-        product.product_count = count;
-        product.product_quantity = quantity;
-        await product.save();
+
         res.status(200).json(product);
     } catch (err) {
-        res.status(500).json({ message: 'Error updating product' });
+        res.status(500).json({ message: `Error updating product, ${err.message}` });
     }
 };
+
 
 const deleteProduct = async (req, res) => {
     const id = req.params.id;

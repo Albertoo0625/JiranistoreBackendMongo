@@ -8,12 +8,14 @@ const verifyRoles=require('../middleware/verifyRoles');
 
 router.get('/',productController.getAllProducts);
 router.post('/',productController.addProduct);
-router.put('/:id',productController.updateProduct);
+
 
 router.route('/:id')
     .get(productController.getOneProduct)
-    .delete(productController.deleteProduct);
+    .delete(productController.deleteProduct)
+    .put(productController.updateProduct);
 
+    
 router.route('/search/:query')
 .get(productController.searchProduct)
 

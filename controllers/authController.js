@@ -65,6 +65,25 @@ const getUsersDetails = async (req, res) => {
     console.error("Error:", error);
     res.status(500).json({ "message": "Internal Server Error" });
   }
+
+     }
+  const updateRoles = async (req, res) => {
+    const { id } = req.params;
+    const { roles } = req.body;
+
+    console.log(roles);
+
+    try {
+        const user = await User.findOne({ user_id: id });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        user.user_roles = roles;
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating user' });
+    }
 }
 
-module.exports = { handleLogin, getUsersDetails };
+module.exports = { handleLogin, getUsersDetails ,updateRoles};
